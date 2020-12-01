@@ -23,7 +23,7 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
     )
   }
   return todos.map((todo, index) => (
-    <div className={todo.isComplete ? 'todoRowComplete' : 'todoRow'} key={index}>
+    <div className={todo.isComplete ? 'todoRow complete' : 'todoRow'} key={index}>
       <div key={todo.id} onClick={() => completeTodo(todo.id)}>
         {todo.text}
       </div>
