@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import TodoForm from './TodoForm';
-function Todo() {
+import { RiCloseCircleLine } from 'react-icons/ri';
+import { TiEdit } from 'react-icons/ti';
+
+function Todo({ todos, completeTodo }) {
   const [edit, setEdit] = useState({
     id: null,
     value: '',
@@ -9,6 +12,10 @@ function Todo() {
     <div className={todo.isComplete ? 'todoRowComplete' : 'todoRow'} key={index}>
       <div key={todo.id} onClick={() => completeTodo(todo.id)}>
         {todo.text}
+      </div>
+      <div className="icons">
+        <RiCloseCircleLine />
+        <TiEdit />
       </div>
     </div>
   ))
