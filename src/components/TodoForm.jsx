@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 function TodoForm(props) {
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState(props.edit ? props.edit.value : '')
 
   const inputRef = useRef(null);
 
@@ -25,15 +25,32 @@ function TodoForm(props) {
   }
   return (
     <form className="todoForm" onSubmit={handleSubmit}>
-      <input 
-        type="text" 
-        placeholder="Add a TODO" 
-        value={input} name="text" 
-        className="todoInput"
-        onChange={handleChange}
-        ref={inputRef}
-      />
-      <button className="todoButton">Add TODO</button>
+      {props.edit ? (
+        <>
+          <input 
+            type="text" 
+            placeholder="Update Todo" 
+            value={input} name="text" 
+            className="todoInput edit"
+            onChange={handleChange}
+            ref={inputRef}
+          />
+          <button className="todoButton edit">Update</button>
+        </>
+        ) : (
+          <>
+            <input 
+              type="text" 
+              placeholder="Add a TODO" 
+              value={input} name="text" 
+              className="todoInput"
+              onChange={handleChange}
+              ref={inputRef}
+            />
+            <button className="todoButton">Add TODO</button>
+          </>
+        )
+      }
     </form>
   )
 }
